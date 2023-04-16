@@ -1,0 +1,71 @@
+{% extends 'soft/main.html' %}
+{% load static %}
+
+
+{% block content_cart %}
+
+<div class="mb-4 bg-light rounded-3">
+     <div class="container-fluid py-3 text-center">
+     <h1 class="display-5 fw-bold">корзина</h1>
+     </div>
+
+    <h3>Общая стоимость: {{ cart.total_price }} рублей</h3>
+
+    <h4>Общее количество: {{ cart.total_count }} штук</h4>
+
+
+
+
+{% for divan in cart.divans %}
+              <li class="list-group-item d-flex justify-content-between lh-sm">
+                <div>
+                  <h4 class="my-2">
+                      <a class="text-dark text-decoration-none" href="{{ divan.get_absolute_url }}">
+                          {{ divan.name }}
+                      </a>
+                  </h4>
+                    {{ divan.count_images }}
+                </div>
+                <h5 class="text-muted">{{ divan.total_cost }} ₽</h5>
+              </li>
+            {% endfor %}
+
+
+<form class="needs-validation" novalidate method="post">
+            {% csrf_token %}
+          <div class="row g-3">
+
+            <div class="col-12">
+              <label for="name" class="form-label">Ваше имя <span class="text-muted"></span></label>
+              <input type="text" name="name" class="form-control {% if form.name.errors %}is-invalid{% endif %}" id="name" required>
+              <div class="invalid-feedback">
+                {% if form.name.errors %}
+                    <span>Соболезнуем, что у тебя такое имя, но введи что-то человеческое</span>
+                {% endif %}
+              </div>
+            </div>
+
+            <div class="col-12">
+              <label for="phone" class="form-label">Телефон <span class="text-muted">(Для уточнения заказа)</span></label>
+              <input type="number" name="phone" class="form-control {% if form.phone.errors %}is-invalid{% endif %}" id="phone" placeholder="+7 " required>
+              <div class="invalid-feedback">
+                {% if form.address.errors %}
+                    <span>(Адрес доставки)</span>
+                {% endif %}
+              </div>
+            </div>
+
+            <div class="col-12">
+              <label for="address" class="form-label">Куда? <span class="text-muted">(Только нормально адрес пиши)</span></label>
+              <input type="text" name="address" class="form-control {% if form.address.errors %}is-invalid{% endif %}" id="address" placeholder="Адрес" required>
+              <div class="invalid-feedback">
+                {% if form.address.errors %}
+                    <span>Мы туда ехать не будем!</span>
+                {% endif %}
+              </div>
+            <button class="w-100 btn btn-primary btn-lg" type="submit">Оформить заказ</button>
+            </div>
+
+
+
+{% endblock %}

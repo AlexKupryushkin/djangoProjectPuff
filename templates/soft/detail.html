@@ -1,0 +1,52 @@
+{% extends 'soft/main.html' %}
+{% load static %}
+
+{% block test %}
+
+
+
+<div class="container py-5">
+    <div class="row pt-3">
+        <div class="col-12 col-md-5">
+            <div class="img-wrp">
+                <img src="{{ divan.image.url }}" class="img-fluid mb-5 rounded">
+            </div>
+        </div>
+        <div class="text-center col-12 col-md-7">
+            <h1 class="mt-0 mb-4">
+                {{ divan.name | upper }}
+            </h1>
+            <h5>{{ divan.about }}</h5>
+
+            <form action="{% url 'add-divan' divan.id %}" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+
+                   <div class="py-1">
+                    <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+
+{#                       - #}
+                      <button type="button" id="remove_divan" class="btn btn-outline-success">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="me-2" viewBox="0 0 16 16">
+                          <path fill-rule="evenodd" d="M2 8a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11A.5.5 0 0 1 2 8Z"></path>
+                        </svg>
+                      </button>
+{##}
+                      <input id="count" type="radio" value="1" class="btn-check" name="count" id="count" autocomplete="off" checked>
+                      <label class="btn btn-outline-light" style="padding: 10px 20px" for="count1">
+                          <span class="display-6" id="count-vis">1</span>
+                      </label>
+
+                      {# + #}
+                      <button type="button" id="add-divan" class="btn btn-outline-success">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="me-2" viewBox="0 0 16 16">
+                          <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"></path>
+                        </svg>
+                      </button>
+
+                    </div>
+                </div>
+
+                    <input type="submit" value="В корзину">
+            </form>
+        </div>
+{% endblock %}

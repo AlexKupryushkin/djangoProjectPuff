@@ -1,0 +1,15 @@
+{% extends 'soft/main.html' %}
+ 
+{% block content-add %}
+<h1>{{title}}</h1>
+    <p>Содержимое страницы</p>
+
+
+<form action="{% url 'add1-divan' %}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Добавить</button>
+</form>
+
+
+{% endblock %}

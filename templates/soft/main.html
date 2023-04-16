@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Мягкая мебель</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+</head>
+<body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
+
+
+
+<header data-bs-theme="dark">
+  <div class="text-bg-dark collapse show" id="navbarHeader" style="">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-8 col-md-7 py-4">
+          <h4>О нас</h4>
+          <p class="text-body-secondary">Мягкая мебель – это не только часть декора интерьера, но и залог комфорта, ведь практически каждый предпочитает смотреть телевизор и читать книги, удобно разместившись на диване.</p>
+        </div>
+        <div class="col-sm-4 offset-md-1 py-4">
+          <h4>Личный кабинет</h4>
+          <ul class="list-unstyled">
+            <li><a href="{% url 'reg' %}" class="text-white">Регистрация</a></li>
+{#            <li><a href="{% url 'login' %}" class="text-white">Войти</a></li>#}
+
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+
+
+
+
+<div class="navbar navbar-dark bg-dark shadow-sm">
+    <div class="container">
+      <a href="{% url 'home' %}" class="navbar-brand d-flex align-items-center">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" aria-hidden="true" class="me-2" viewBox="0 0 24 24">
+            <path d="M321.008 1024c-68.246-142.008-31.902-223.378 20.55-300.044 57.44-83.956 72.244-167.066 72.244-167.066s45.154 58.7 27.092 150.508c79.772-88.8 94.824-230.28 82.782-284.464 180.314 126.012 257.376 398.856 153.522 601.066 552.372-312.532 137.398-780.172 65.154-832.85 24.082 52.676 28.648 141.85-20 185.126-82.352-312.276-285.972-376.276-285.972-376.276 24.082 161.044-87.296 337.144-194.696 468.73-3.774-64.216-7.782-108.528-41.55-169.98-7.58 116.656-96.732 211.748-120.874 328.628-32.702 158.286 24.496 274.18 241.748 396.622z"></path>
+
+            <circle cx="12" cy="13" r="4"></circle>
+        </svg>
+        <strong>МЯГКАЯ МЕБЕЛЬ</strong>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
+  </div>
+
+{% block content-head %}{% endblock %}
+
+{% block content %}{% endblock %}
+
+{% block test %}{% endblock %}
+
+{% block content_cart %}{% endblock %}
+
+{% block content-add %}{% endblock %}
+
+
+<footer class="py-3 my-4">
+    <p class="text-center text-body-secondary">© 2023 Alex Kupryushkin, Inc</p>
+</footer>
+
+</body>
+</html>
