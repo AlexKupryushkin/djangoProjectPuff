@@ -1,15 +1,15 @@
+from django.core.paginator import Paginator
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse_lazy
 from django.views import View
-from django.views.generic import CreateView
+from django.views.generic import CreateView, ListView
 
 from .forms import *
-from .models import Divan, Orders
+from .models import *
 from .cart import DivanCart
 
 
 class HomeListView(View):
-
     """домашняя страница"""
 
     def get(self, request):
@@ -25,30 +25,29 @@ class DivanListView(View):
         )
 
 
-class Divan1ListView(View):
+class DivansCategoryListView(ListView):
+    """диваны"""
 
-    """прямые диваны"""
+    model = Divan
+    template_name = "soft/list.html"
+    context_object_name = "divans"
+    paginate_by = 20
+    paginator_class = Paginator
 
-    def get(self, request):
-        return render(
-            request, "soft/list.html",
-            {
-                'divans': Divan.objects.filter(type=1),
-            }
-        )
+    def get_queryset(self):
+        return Divan.objects.filter(type__name=self.kwargs["category_name"])
 
 
-class Divan2ListView(View):
-
-    """угловые диваны"""
-
-    def get(self, request):
-        return render(
-            request, "soft/list.html",
-            {
-                'divans': Divan.objects.filter(type=2)
-            }
-        )
+# class Divan2ListView(View):
+#     """угловые диваны"""
+#
+#     def get(self, request):
+#         return render(
+#             request, "soft/list.html",
+#             {
+#                 'divans': Divan.objects.filter(type=2)
+#             }
+#         )
 
 
 class DivanView(View):
@@ -87,7 +86,6 @@ class DivanView(View):
 
 
 class AddDivanView(View):
-
     """добавление дивана в корзину"""
 
     def post(self, request, divan_id: int):
@@ -104,7 +102,6 @@ class AddDivanView(View):
 
 
 class ShowCartView(View):
-
     """просмотр корзины"""
 
     def get(self, request):
@@ -115,7 +112,11 @@ class ShowCartView(View):
                                             "form": CreateOrderForm()
                                             }
             )
-        return redirect("show-cart")
+        else:
+            return render(
+                request, "soft/nocart.html")
+
+        # return redirect("show-cart")
 
     def post(self, request):
         form = CreateOrderForm(request.POST)
@@ -152,7 +153,7 @@ class DataMixin:
 class RegisterUser(DataMixin, CreateView):
     form_class = RegisterUserForm
     template_name = 'soft/register.html'
-    success_url = reverse_lazy('login')
+    # success_url = reverse_lazy('login')
 
     # def get_context_data(self, *, object_list=None, **kwargs):
     #     context = super().get_context_data(**kwargs)

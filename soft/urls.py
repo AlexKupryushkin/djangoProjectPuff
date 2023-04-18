@@ -7,8 +7,8 @@ from .views import *
 
 urlpatterns = [
     path('', HomeListView.as_view(), name='home'),
-    path('list/', Divan1ListView.as_view(), name='divan_'),
-    path('list1/', Divan2ListView.as_view(), name='divan1'),
+    path('sofas/<category_name>', DivansCategoryListView.as_view(), name='divan_'),
+    # path('list1/', Divan2ListView.as_view(), name='divan1'),
 
     path('list/<int:divan_id>', DivanView.as_view(), name='one_divan'),
 

@@ -27,5 +27,29 @@
 
 {% endfor %}
 
+{##}
+{#<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">#}
+{#{% for d2 in divans2  %}#}
+{##}
+{#        <div class="col">#}
+{#          <div class="card shadow-sm">#}
+{#              <a class="card"  href="{% url 'one_divan' d2.id %}">#}
+{#                <img height="100%"  src="{{ d2.image.url }}" class="rounded">#}
+{#            </a>#}
+{#              <div class="card-body">#}
+{#                <h3>{{ d2.name }}</h3>#}
+{#              <p class="card-text">{{ d.about }}</p>#}
+{#              <div class="d-flex justify-content-between align-items-center">#}
+{#                <div class="btn-group">#}
+{#                </div>#}
+{#                <small class="text-body-secondary">Цена: {{ d2.cost }} руб.</small>#}
+{#              </div>#}
+{#            </div>#}
+{#          </div>#}
+{#        </div>#}
+{##}
+{##}
+{#{% endfor %}#}
+
 
 {% endblock %}

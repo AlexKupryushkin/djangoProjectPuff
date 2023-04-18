@@ -17,10 +17,11 @@
 
 
 
+
     <div class="container py-3">
 <div class="row row-cols-1 row-cols-lg-2 align-items-stretch g-4 py-5">
   <div class="col">
-    <a href="{% url 'divan_'%}" class="text-decoration-none">
+    <a href="{% url 'divan_' 'прямой' %}" class="text-decoration-none">
     <div class="card-image card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg"
          style="background-image: url('{% static 'soft/img/home2.jpg' %}')">
       <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
@@ -30,8 +31,10 @@
     </a>
   </div>
 
+
+
   <div class="col">
-    <a href="{% url 'divan1' %}" class="text-decoration-none">
+    <a href="{% url 'divan_' 'угловой' %}" class="text-decoration-none">
     <div class="card-image card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg"
          style="background-image: url('{% static 'soft/img/preiwe Hills-602x345.jpg' %}' )">
       <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
@@ -44,5 +47,8 @@
     </div>
     </a>
   </div>
+</div>
+    </div>
+
 
 {% endblock %}

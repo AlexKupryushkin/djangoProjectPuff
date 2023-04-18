@@ -33,6 +33,9 @@ class Type(models.Model):
     def __str__(self):
         return self.name
 
+    # def get_absolute_url(self):
+    #     return reverse('divan_', kwargs={'type_id': self.pk})
+
     class Meta:
         verbose_name = "Тип"
         verbose_name_plural = "Типы"
