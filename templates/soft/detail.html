@@ -3,8 +3,6 @@
 
 {% block test %}
 
-
-
 <div class="container py-5">
     <div class="row pt-3">
         <div class="col-12 col-md-5">
@@ -25,7 +23,7 @@
                     <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
 
 {#                       - #}
-                      <button type="button" id="remove_divan" class="btn btn-outline-success">
+                      <button type="button" id="remove_divan" class="btn btn-outline-success remove-item-btn">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="me-2" viewBox="0 0 16 16">
                           <path fill-rule="evenodd" d="M2 8a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11A.5.5 0 0 1 2 8Z"></path>
                         </svg>
@@ -33,11 +31,11 @@
 {##}
                       <input id="count" type="radio" value="1" class="btn-check" name="count" id="count" autocomplete="off" checked>
                       <label class="btn btn-outline-light" style="padding: 10px 20px" for="count1">
-                          <span class="display-6" id="count-vis">1</span>
+                          <span class="display-6 items-total-count" id="count-vis" name="count">1</span>
                       </label>
 
                       {# + #}
-                      <button type="button" id="add-divan" class="btn btn-outline-success">
+                      <button type="button" id="add-divan" class="btn btn-outline-success add-item-btn">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="me-2" viewBox="0 0 16 16">
                           <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"></path>
                         </svg>
@@ -46,7 +44,8 @@
                     </div>
                 </div>
 
-                    <input type="submit" value="В корзину">
+                    <input type="submit" value="В корзину" class="add-to-bag-btn">
             </form>
         </div>
+        <script type="text/javascript" src={% static "soft/js/counter.js" %}></script>
 {% endblock %}
