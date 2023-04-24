@@ -7,11 +7,6 @@ class DivanSerializer(serializers.ModelSerializer):
         model = Divan
         fields = "__all__"
 
-    # def to_representation(self, instance: Divan):
-    #     res = super().to_representation(instance)
-    #     res["cost"] = instance.diameters_cost
-    #     return res
-
 
 class OrderSerializer(serializers.ModelSerializer):
     divan_detail = DivanSerializer(source="divan", read_only=True)

@@ -22,7 +22,6 @@ from djangoProjectPuff import settings
 from soft.api.v0 import views
 from soft.views import *
 
-
 router = DefaultRouter()
 
 router.register("divans", views.DivanControlViewSet)
@@ -33,10 +32,16 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('soft.urls')),
 
-
     path("api/v1/", include(router.urls))
 ]
 
 if settings.DEBUG:
-    # urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    import debug_toolbar
+
+    urlpatterns = [
+                      path('__debug__/', include(debug_toolbar.urls)),
+                  ] + urlpatterns
+
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+    # urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

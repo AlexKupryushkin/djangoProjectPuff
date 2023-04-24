@@ -11,9 +11,7 @@
 
     <h3>Общая стоимость: {{ cart.total_price }} рублей</h3>
 
-    <h4>Общее количество: {{ cart.total_count }} штук</h4>
-
-
+    <h4>Количество диванов: {{ cart.total_count }}</h4>
 
 
 {% for divan in cart.divans %}
@@ -40,7 +38,7 @@
               <input type="text" name="name" class="form-control {% if form.name.errors %}is-invalid{% endif %}" id="name" required>
               <div class="invalid-feedback">
                 {% if form.name.errors %}
-                    <span>Соболезнуем, что у тебя такое имя, но введи что-то человеческое</span>
+                    <span>Введите верное имя</span>
                 {% endif %}
               </div>
             </div>
@@ -56,11 +54,11 @@
             </div>
 
             <div class="col-12">
-              <label for="address" class="form-label">Куда? <span class="text-muted">(Только нормально адрес пиши)</span></label>
+              <label for="address" class="form-label">Куда? <span class="text-muted">(Введите верный адрес доставки)</span></label>
               <input type="text" name="address" class="form-control {% if form.address.errors %}is-invalid{% endif %}" id="address" placeholder="Адрес" required>
               <div class="invalid-feedback">
                 {% if form.address.errors %}
-                    <span>Мы туда ехать не будем!</span>
+                    <span>Введите верный адрес доставки</span>
                 {% endif %}
               </div>
             <button class="w-100 btn btn-primary btn-lg" type="submit">Оформить заказ</button>

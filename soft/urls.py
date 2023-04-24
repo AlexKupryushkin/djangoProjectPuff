@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django.contrib.auth import login
 from django.urls import path
 
 from . import views
@@ -18,6 +19,9 @@ urlpatterns = [
 
 
     path('reg/', RegisterUser.as_view(), name='reg'),
+    path('login/', LoginUser.as_view(), name='login'),
+    path('logout/', logout_user, name='logout'),
+
 
 
 ]
