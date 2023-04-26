@@ -8,9 +8,7 @@ class DivanCart:
     divan_image = '<img height="40px" src="/static/soft/img/111.png">'
 
     def __init__(self, request):
-        """
-        Инициализируем корзину
-        """
+        """инициализируем корзину"""
 
         # request.session - хранилище данных пользователя
         # создаем свой объект
@@ -33,9 +31,7 @@ class DivanCart:
         self.divans = []
 
     def add(self, divan: Divan, quantity=1, update_quantity=False,):
-        """
-        Добавить продукт в корзину или обновить его количество.
-        """
+        """добавить продукт в корзину или обновить его количество"""
 
         divan_id = str(divan.id)
         if divan_id not in self.cart:
@@ -54,27 +50,21 @@ class DivanCart:
         self.session.modified = True
 
     def remove(self, divan):
-        """
-        Удаление товара из корзины.
-        """
+        """удаление товара из корзины"""
         divan_id = str(divan.id)
         if divan_id in self.cart:
             del self.cart[divan_id]
             self.save()
 
     def __len__(self):
-        """
-        Подсчет всех товаров в корзине.
-        """
+        """подсчет всех товаров в корзине"""
         return sum(item["quantity"] for item in self.cart.values())
 
     def total_count(self):
         return len(self)
 
     def total_price(self):
-        """
-        Подсчет стоимости товаров в корзине.
-        """
+        """подсчет стоимости товаров в корзине"""
         if not self.divans:
             self.create_objects()
         price = 0

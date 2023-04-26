@@ -13,12 +13,6 @@ class Divan(models.Model):
     def __str__(self):
         return self.name
 
-    # def get_absolute_url(self):
-    #     return reverse('divan_', kwargs={'slug': self.slug})
-
-    # def get_absolute_url(self):
-    #     return f"/list/{self.slug}"
-
     class Meta:
         verbose_name = "Диван"
         verbose_name_plural = "Диваны"
@@ -33,21 +27,16 @@ class Type(models.Model):
     def __str__(self):
         return self.name
 
-    # def get_absolute_url(self):
-    #     return reverse('divan_', kwargs={'type_id': self.pk})
-
     class Meta:
         verbose_name = "Тип"
         verbose_name_plural = "Типы"
 
 
 class Orders(models.Model):
-
     divan = models.ForeignKey(Divan, related_name="orders", on_delete=models.CASCADE)
     name = models.CharField(max_length=100)
     address = models.CharField(max_length=255)
     phone = models.IntegerField()
-
     count = models.IntegerField()
     datetime = models.DateTimeField(auto_now_add=True)
 

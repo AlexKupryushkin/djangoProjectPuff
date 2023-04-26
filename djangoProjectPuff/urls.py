@@ -16,23 +16,16 @@ Including another URLconf
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
-from rest_framework.routers import DefaultRouter
-
 from djangoProjectPuff import settings
-from soft.api.v0 import views
 from soft.views import *
 
-router = DefaultRouter()
-
-router.register("divans", views.DivanControlViewSet)
-router.register("orders", views.OrderControlViewSet)
 
 urlpatterns = [
 
     path('admin/', admin.site.urls),
     path('', include('soft.urls')),
 
-    path("api/v1/", include(router.urls))
+    path("api/v0/", include('soft.api.v0.urls')),
 ]
 
 if settings.DEBUG:

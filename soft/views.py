@@ -43,6 +43,7 @@ class DivansCategoryListView(ListView):
 
 class DivanView(View):
     """детальное отображение дивана"""
+
     def get(self, request, divan_id: int):
         return render(
             request, "soft/detail.html",
@@ -51,30 +52,6 @@ class DivanView(View):
                 "cart": DivanCart(request)
             }
         )
-
-
-# ------------------
-
-# def adddivan(request):
-
-'''добавление дивана'''
-
-
-#     if request.method == 'POST':
-#         form = AddDivanForm(request.POST)
-#         if form.is_valid():
-#             # print(form.cleaned_data)
-#             try:
-#                 Divan.objects.create(**form.cleaned_data)
-#                 return redirect('home')
-#             except:
-#                 form.add_error(None, 'Ошибка добавления!')
-#     else:
-#         form = AddDivanForm()
-#     return render(request, 'soft/adddivan.html', {'title': 'Добавление!',
-#                                                   'form': form})
-
-# ------------------
 
 
 class AddDivanView(View):
@@ -107,8 +84,6 @@ class ShowCartView(View):
         else:
             return render(
                 request, "soft/nocart.html")
-
-        # return redirect("show-cart")
 
     def post(self, request):
         form = CreateOrderForm(request.POST)
